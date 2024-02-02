@@ -18,6 +18,7 @@ Anda mewakili bahwa masing-masing Kontribusi Anda adalah ciptaan asli Anda (liha
 Anda tidak diharapkan untuk memberikan dukungan untuk Kontribusi Anda, kecuali sejauh Anda ingin memberikan dukungan. Anda dapat memberikan dukungan secara gratis, untuk biaya, atau tidak sama sekali. Kecuali diperlukan oleh hukum yang berlaku atau disepakati secara tertulis, Anda menyediakan Kontribusi Anda pada BASIS "AS IS" , TATATANG WARRANTIES OR CONDITIONS OF ANY KIND, baik mengekspresikan atau tersirat, termasuk, tanpa batasan, garansi atau kondisi TITLE, NON - INFRINGEMENT, MERCHANTABILITY, atau FITNESS UNTUK PARTICULPURPRPOSY.Jika Anda ingin mengajukan pekerjaan yang bukan penciptaan asli Anda, Anda dapat mengirimkannya ke Google secara terpisah dari Kontribusi apapun, mengidentifikasi rincian lengkap dari sumbernya dan dari lisensi atau pembatasan lainnya (termasuk, tetapi tidak terbatas pada, paten terkait, merek dagang, dan perjanjian lisensi) yang Anda sadari secara pribadi, dan secara mencolok menandai pekerjaan sebagai "Diterbitkan atas nama pihak                                       :                                         
 #[Syarat](https://developers.google.com/terms/site-terms)[Privasi](https://policies.google.com/privacy?hl=en)
 [Homepage](https://www.google.co.id)
+*[Topics](https://github.com/topics)
 *kueri
 <Individual Perjanjian>
 <Individual perjanjian we have pada file untuk Anda:
