@@ -1,7 +1,7 @@
 # window (CMD)
-& "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AVG7fiTo8SAjl22D4oZGPcukM0Tz5iMbxXG7K2JMUfEUx25trVQ8uZ1rez_D5JLaQ4Jo3Q" --redirect-url="https://remotedesktop.google.com/_/oauthredirect"*=$Env:COMPUTER*
+& "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AVG7fiTo8SAjl22D4oZGPcukM0Tz5iMbxXG7K2JMUfEUx25trVQ8uZ1rez_D5JLaQ4Jo3Q" --redirect-url="https://remotedesktop.google.com/_/oauthredirect"*=$Env:COMPUTERGOOGLE
 # window (power Shell)
-& "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AVG7fiTo8SAjl22D4oZGPcukM0Tz5iMbxXG7K2JMUfEUx25trVQ8uZ1rez_D5JLaQ4Jo3Q" --redirect-url="https://remotedesktop.google.com/_/oauthredirect"*=$Env:COMPUTER*
+& "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AVG7fiTo8SAjl22D4oZGPcukM0Tz5iMbxXG7K2JMUfEUx25trVQ8uZ1rez_D5JLaQ4Jo3Q" --redirect-url="https://remotedesktop.google.com/_/oauthredirect"*=$Env:COMPUTERGOOGLE
 # Debian (Linux)
 DISPLAY= /opt/google/chrome-remote-desktop/start-host-*-code="4/0AVG7fiTo8SAjl22D4oZGPcukM0Tz5iMbxXG7K2JMUfEUx25trVQ8uZ1rez_D5JLaQ4Jo3Q" --redirect- url="https://remotedesktop.google.com/_/oauthredirect"*=$(google)
 
