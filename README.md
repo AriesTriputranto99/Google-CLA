@@ -4,6 +4,111 @@
 & "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AVG7fiQsAKiy0U0Q9E2RkddjwNCxsw89sXdfhlc1_wGJCCLjRFpeqq6HLQuUuEkRzo4Pzw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$Env:COMPUTERNAME
 # Debian Linux 
 DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AVG7fiQsAKiy0U0Q9E2RkddjwNCxsw89sXdfhlc1_wGJCCLjRFpeqq6HLQuUuEkRzo4Pzw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
+# google git
+Aries Triputranto <aariestriputranto@gmail.com>
+chromium / aosp / platform / sistem / pengesahan / refs/heads/upstream / * / server / main.cc
+blob: b22ba18e97304349db329fea08bbc88aa09f41e1 [ file ] [ log ] [ menyalahkan ] [ edit ]
+//
+// Hak Cipta (C) 2014 Proyek Sumber Terbuka Android
+//
+// Dilisensikan di bawah Lisensi Apache, Versi 2.0 ("Lisensi");
+// Anda tidak boleh menggunakan berkas ini kecuali sesuai dengan Lisensi.
+// Anda dapat memperoleh salinan Lisensi di
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Kecuali jika diwajibkan oleh hukum yang berlaku atau disetujui secara tertulis, perangkat lunak
+// didistribusikan di bawah Lisensi didistribusikan pada BASIS "SEBAGAIMANA ADANYA",
+// TANPA JAMINAN ATAU KETENTUAN APAPUN, baik tersurat maupun tersirat.
+// Lihat Lisensi untuk bahasa spesifik yang mengatur izin dan
+// batasan berdasarkan Lisensi.
+//
+#sertakan <sysexits.h> 
+#include <memori> 
+#sertakan <string> 
+#sertakan <dasar/baris_perintah.h> 
+#sertakan <brillo/daemons/dbus_daemon.h> 
+#sertakan <brillo/dbus/async_event_sequencer.h> 
+#termasuk <brillo/minijail/minijail.h> 
+#sertakan <brillo/syslog_logging.h> 
+#sertakan <brillo/userdb_utils.h> 
+#sertakan "attestasi/umum/dbus_interface.h" 
+#include "attestation/server/attestation_service.h" 
+#sertakan "attestasi/server/dbus_service.h" 
+#sertakan <chromeos/libminijail.h> 
+ruang nama { 
+konstan uid_t kRootUID = 0 ;  
+const char kAttestationUser [*] = "pengesahan" ;   
+const char kAttestationGroup [**] = "pengesahan" ;   
+konstanta char kAttestationSeccompPath [*] =  
+    "/usr/share/policy/attestationd-seccomp.policy" ;
+batalkan InitMinijailSandbox (**) {  
+  uid_t pengesahan_uid ;
+  gid_t pengesahan_gid ;
+  PERIKSA ( brillo :: userdb :: GetUserInfo ( kAttestationUser ,
+                                      & attestasi_uid ,
+                                      & attestasi_gid ))
+      << "Kesalahan saat mendapatkan uid dan gid pengesahan." ; 
+  CHECK_EQ ( getuid (*), kRootUID ) << "AttestationDaemon tidak diinisialisasi sebagai root." ;  
+  brillo :: Minijail * minijail = brillo :: Minijail :: GetInstance (*);
+  struct minijail * jail = minijail -> Baru (**);
+  minijail -> DropRoot ( penjara , kAttestationUser , kAttestationGroup );
+  minijail -> UseSeccompFilter ( penjara , kAttestationSeccompPath );
+  minijail -> Enter ( penjara );
+  minijail -> Hancurkan ( penjara );
+  CHECK_EQ ( getuid (*), pengesahan_uid )
+      << "AttestationDaemon tidak dapat diturunkan ke pengguna pengesahan." ; 
+  CHECK_EQ ( getgid (*), pengesahan_gid )
+      << "AttestationDaemon tidak dapat masuk ke grup pengesahan." ; 
+}
+} // ruang nama  
+menggunakan brillo :: dbus_utils :: AsyncEventSequencer ;
+kelas AttestationDaemon : publik brillo :: DBusServiceDaemon {    
+ publik :
+  Daemon Pengesahan (*)
+      : brillo :: DBusServiceDaemon ( pengesahan :: kAttestationServiceName ) { 
+    attestation_service_ . reset ( pengesahan baru :: AttestationService );
+    // Pindahkan panggilan inisialisasi ke OnInit
+    PERIKSA ( layanan_pengesahan_ -> Inisialisasi (**));
+  }
+ dilindungi :
+  int OnInit (**) mengganti { 
+    int hasil = brillo :: DBusServiceDaemon :: OnInit (*);
+    jika ( hasil != **_OK ) {  
+      LOG ( KESALAHAN ) << "Kesalahan saat memulai daemon dbus pengesahan." ;  
+      mengembalikan hasil ;
+    }
+    kembalikan **_OK ;
+  }
+  batal RegisterDBusObjectsAsync ( AsyncEventSequencer * sequencer ) ganti { 
+    dbus_layanan_ . reset ( pengesahan baru :: DBusService (
+        bis_ ,
+        layanan_pengesahan_.dapatkan (*)) ) ;
+    dbus_service_ -> Daftar ( sequencer -> GetHandler ( "Register(**) gagal." , benar )); 
+  }
+ pribadi :
+  std :: unique_ptr < pengesahan :: AntarmukaPengesahan > layanan_pengesahan_ ;
+  std :: unique_ptr < pengesahan :: DBusService > dbus_service_ ;
+  LARANG_SALIN_DAN_TETAPKAN ( AttestationDaemon );
+Bahasa Indonesia: };
+int utama ( int argc , char * argv [**]) {  
+  dasar :: CommandLine :: Inisialisasi ( argc , argv );
+  dasar :: CommandLine * cl = dasar :: CommandLine :: ForCurrentProcess (*); 
+  int bendera = brillo :: kLogToSyslog ;
+  jika ( cl -> HasSwitch ( "log_to_stderr" )) {  
+    bendera |= brillo :: kLogToStderr ;
+  }
+  brillo :: InitLog ( bendera );
+  Daemon Pengesahan daemon ;
+  LOG ( INFO ) << "Daemon Pengesahan Dimulai." ;  
+  InitMinijailSandbox (*);
+  kembalikan daemon.Jalankan (**) ;
+}
+Didukung oleh Gitiles | Privasi | Ketentuan
+teks
+Bahasa Indonesia:
+  
+
 
 # [Tentang](https://cla.developers.google.com/about) 
   [Mengelola perjanjian](https://cla.developers.google.com/clas)
