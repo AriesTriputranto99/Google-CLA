@@ -4,7 +4,7 @@
 & "${Env:PROGRAMFILES(X86)}\Google\Chrome Remote Desktop\CurrentVersion\remoting_start_host.exe" --code="4/0AVG7fiQsAKiy0U0Q9E2RkddjwNCxsw89sXdfhlc1_wGJCCLjRFpeqq6HLQuUuEkRzo4Pzw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$Env:COMPUTERNAME
 # Debian Linux 
 DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AVG7fiQsAKiy0U0Q9E2RkddjwNCxsw89sXdfhlc1_wGJCCLjRFpeqq6HLQuUuEkRzo4Pzw" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)
-# google git ![lockup_git_color_108x24dp](https://github.com/user-attachments/assets/c0e49d6a-cbe1-4f1d-815b-6ce560327a93)
+# ![lockup_git_color_108x24dp](https://github.com/user-attachments/assets/c0e49d6a-cbe1-4f1d-815b-6ce560327a93)
 
 Aries Triputranto <aariestriputranto@gmail.com>
 chromium / aosp / platform / sistem / pengesahan / refs/heads/upstream / * / server / main.cc
